@@ -1,4 +1,34 @@
+:root {
+  --gap: var(--size-step-0);
+  --full: minmax(var(--gap), 1fr);
+  --quote: minmax(0, var(--size-step-1));
+  --content: min(clamp(30rem, 52vw, 60rem), 100% - var(--gap) * 2);
+}
+
 article {
-    max-width: 65ch;
-    margin-inline: auto;
+  max-width: none;
+  margin-inline: 0;
+  display: grid;
+  /** De 3 størlser fortæller hvor linjerne i kolonne skal sarte og stoppe **/
+  grid-template-columns:
+    [full-start] var(--full)
+    [quote-start] var(--quote)
+    [content-start] var(--content) [content-end]
+    var(--quote) [quote-end]
+    var(--full) [full-end];
+}
+
+/** Alle de elemter som er direkte børn placeres som udgangspunkt i midten  af siden **/
+article > * {
+  grid-column: content;
+}
+
+/** Citatet sekmentet spænder over midten, som bliver kaldt "content", og ud til "quote" i kolonnen kanterne **/
+article > blockquote {
+  grid-column: quote;
+}
+
+/** Billedets wrapper spænder over hele gridet og ud til kanterne **/
+article > .break-out {
+  grid-column: full;
 }

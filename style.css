@@ -14,6 +14,9 @@ html {
   --action-secondary: light-dark(#e4e4e4, #181818);
   --on-action-secondary: light-dark(#000, #fff);
 }
+html article header {
+  container: header / inline-size;
+}
 
 article {
   padding: 1rlh;
@@ -38,6 +41,8 @@ header {
     aspect-ratio: 1;
     object-fit: cover;
     border-radius: 1rem;
+    width: 100%;
+    display: block;
   }
 
   > div {
@@ -160,5 +165,65 @@ button[data-theme-switcher] {
 
   &:active {
     scale: 0.98;
+  }
+}
+
+@container article (width < 550px) {
+  .album-details {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .actions {
+    /* Knapperne står på samme række. */
+    flex-direction: row;
+  }
+
+  .actions button {
+    /* Begge knapper får lige meget plads. */
+    flex: 1;
+    padding-block: 0.8rem;
+  }
+
+  header img {
+    mask-image: linear-gradient(to bottom, black 40%, transparent 95%);
+  }
+
+  .content {
+    /* Trækker indholdet op over billedets udtoning. */
+    margin-block-start: -6rem;
+    position: relative;
+    padding-inline: 1rem;
+  }
+
+  .content > p {
+    /* Viser højst to linjer af beskrivelsen. */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+  }
+}
+
+/* NÅR HEADER HAR PLADS: */
+@container header (width >= 550px) {
+  header > div {
+    grid-template-columns: 250px 1fr;
+  }
+
+  .content > p {
+    /* Her er der plads til tre linjer. */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+  }
+}
+
+@container document (width < 550px) {
+  article {
+    padding: 0.25rem;
   }
 }

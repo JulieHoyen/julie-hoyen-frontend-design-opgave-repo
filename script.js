@@ -7,7 +7,7 @@ themeSwitcher.addEventListener("click", () => {
 
 const bandName = "Trouble Bunny";
 
-const songTitles = ["Who Ate the Cable? (Wans't Me)", "Midnight Zoomies", "Hay, Hay, Hay", "Under the Sofa Naps", "Treat Emergency", "Fluffy Chaos", "No More Pellets", "Noizes at The Balcony", "Bunny Business", "Goodnight Ruben"];
+const songTitles = ["Who Ate the Cable? (Wans't Me)", "Midnight Zoomies", "Hay, Hay, Hay", "Under the Sofa Naps", "Treat Emergency", "Fluffy Chaos", "The Real Bad Bunny Please Stand Up?", "Noizes at The Balcony", "Bunny Business", "Goodnight Ruben"];
 
 const songs = document.querySelector(".songs");
 
